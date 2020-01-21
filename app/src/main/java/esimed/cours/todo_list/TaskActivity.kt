@@ -2,6 +2,8 @@ package esimed.cours.todo_list
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -41,6 +43,29 @@ class TaskActivity : AppCompatActivity() {
             addTaskTxt.setText("")
         }
 
+    }
 
+    override fun onCreateOptionsMenu(menu:Menu): Boolean{
+        menuInflater.inflate(R.menu.task_menu,menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val db = TodoDatabase.getDatabase(this)
+
+        val taskDAO = db.taskDAO()
+        val category = intent.getSerializableExtra("category") as Category
+        return when (item.itemId) {
+            R.id.menu_task_checkall -> {
+                taskDAO.checkAll(true,category.id as Long)
+                (lstTodo.adapter as TaskAdapter).notifyDataSetChanged()
+                true
+            }
+            R.id.menu_task_uncheckall ->{
+                taskDAO.checkAll(false,category.id as Long)
+                (lstTodo.adapter as TaskAdapter).notifyDataSetChanged()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

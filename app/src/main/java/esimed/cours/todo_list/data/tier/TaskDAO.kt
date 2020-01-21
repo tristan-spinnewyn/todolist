@@ -15,11 +15,15 @@ interface TaskDAO {
     @Query("SELECT COUNT(*) FROM Task where category = :category")
     fun countTask(category: Long): Int
 
+    @Query("UPDATE Task SET done = :done where category = :category")
+    fun checkAll(done: Boolean,category: Long)
+
     @Insert
     fun insert(task: Task): Long
 
     @Update
     fun update(task: Task)
+
 
     @Delete
     fun Delete(task: Task)

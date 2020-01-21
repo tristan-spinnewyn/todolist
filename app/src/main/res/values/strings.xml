@@ -8,4 +8,6 @@
     <string name="ok">YES</string>
     <string name="title_edit">Edit a category</string>
     <string name="lbl_name">Name:</string>
+    <string name="check_all">Check all</string>
+    <string name="uncheck_all">uncheck all</string>
 </resources>
