@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Todo list</string>
     <string name="example">Exemple SQL</string>
+    <string name="title_activity_category">category</string>
+    <string name="title_add">Add a category</string>
+    <string name="add">ADD</string>
+    <string name="cancel">CANCEL</string>
+    <string name="ok">YES</string>
+    <string name="title_edit">Edit a category</string>
+    <string name="lbl_name">Name:</string>
 </resources>
